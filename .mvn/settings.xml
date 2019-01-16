@@ -1,0 +1,13 @@
+<settings>
+<servers>
+   <server>
+     <id>azure-auth</id>
+      <configuration>
+         <client>84281f56-ab89-4447-93db-4f4371e5387c</client>
+         <tenant>3b50229c-cd78-4588-9bcf-97b7629e2f0f</tenant>
+         <key>test</key>
+         <environment>AZURE</environment>
+      </configuration>
+   </server>
+</servers>
+</settings>
