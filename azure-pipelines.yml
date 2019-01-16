@@ -10,18 +10,13 @@ pool:
   vmImage: 'Ubuntu-16.04'
 
 steps:
-- task: DownloadSecureFile@1
-  inputs:
-    secureFile: 'settings.xml'
 - task: Maven@3
   inputs:
-    Options: '-s $(Agent.TempDirectory)/settings.xml'
     mavenPomFile: 'pom.xml'
     mavenOptions: '-Xmx3072m'
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.8'
     jdkArchitectureOption: 'x64'
-    settings: ''
     publishJUnitResults: false
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'azure-webapp:deploy'
+    goals: 'package'
