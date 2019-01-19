@@ -1,8 +1,6 @@
 package com.kubehe.azure.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import lombok.*;
 
@@ -10,6 +8,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -21,16 +22,28 @@ public class UserEntity {
 
   public static final PasswordEncoder PASSWORD_ENCODER = new BCryptPasswordEncoder();
 
-  private @Id
+  @Id
   @GeneratedValue
-  Long id;
+  private Long id;
 
+  @Column(unique = true)
   private String name;
 
-  private @JsonIgnore
-  String password;
+  @JsonIgnore
+  private String password;
 
   private String[] roles;
+
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+  private Set<UserFoodHistoryEntity> userFoodHistory;
+
+  public void addUserFoodHistoryEntity(UserFoodHistoryEntity entity) {
+    entity.setUser(this);
+    if (this.userFoodHistory == null) {
+      this.userFoodHistory = new HashSet<>();
+    }
+    this.userFoodHistory.add(entity);
+  }
 
   public void setPassword(String password) {
     this.password = PASSWORD_ENCODER.encode(password);
