@@ -35,7 +35,7 @@ public class UserEntity {
   private String[] roles;
 
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-  private Set<UserFoodHistoryEntity> userFoodHistory;
+  private Set<UserFoodHistoryEntity> userFoodHistory = new HashSet<>();
 
   public void addUserFoodHistoryEntity(UserFoodHistoryEntity entity) {
     entity.setUser(this);

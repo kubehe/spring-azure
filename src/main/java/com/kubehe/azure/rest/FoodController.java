@@ -2,6 +2,7 @@ package com.kubehe.azure.rest;
 
 import com.kubehe.azure.service.FoodService;
 import com.kubehe.azure.service.dto.FoodDTO;
+import com.kubehe.azure.service.dto.FoodRequest;
 import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -40,8 +41,8 @@ public class FoodController {
 
   @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
   @ResponseStatus(HttpStatus.CREATED)
-  public ResponseEntity<FoodDTO> addFood(@RequestBody @Valid FoodDTO foodDTO) {
-    var result = foodService.addFood(foodDTO);
+  public ResponseEntity<FoodDTO> addFood(@RequestBody @Valid FoodRequest foodRequest) {
+    var result = foodService.addFood(foodRequest);
     return new ResponseEntity<>(result, HttpStatus.CREATED);
   }
 

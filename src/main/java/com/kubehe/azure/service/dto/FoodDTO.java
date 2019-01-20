@@ -14,5 +14,5 @@ public class FoodDTO {
   private String name;
   @NotNull
   private Long calories;
-  private Set<UserFoodHistoryDTO> userFoodHistoryList;
+  private Set<UserFoodHistoryDTO> userFoodHistory;
 }

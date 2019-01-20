@@ -1,8 +1,8 @@
 package com.kubehe.azure;
 
+import com.kubehe.azure.authorization.UserRole;
 import com.kubehe.azure.domain.UserEntity;
 import com.kubehe.azure.repository.UserRepository;
-import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -23,11 +23,11 @@ public class AzureCommandLineRunner implements CommandLineRunner {
   @Override
   public void run(String... args) throws Exception {
 
-    this.userRepository.save(UserEntity.builder().name("admin").password("admin").roles(new String[]{"ADMIN"}).build());
+    this.userRepository.save(UserEntity.builder().name("admin").password("admin").roles(new String[]{UserRole.ADMIN.getValue()}).build());
 
     SecurityContextHolder.getContext().setAuthentication(
       new UsernamePasswordAuthenticationToken("admin", "lolasdfasdfa",
-        AuthorityUtils.createAuthorityList("ADMIN")));
+        AuthorityUtils.createAuthorityList(UserRole.ADMIN.getValue())));
 
     SecurityContextHolder.clearContext();
   }

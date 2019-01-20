@@ -1,7 +1,7 @@
 package com.kubehe.azure.service.dto;
 
 
-import lombok.Builder;
+import com.kubehe.azure.authorization.UserRole;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,6 +13,6 @@ import java.util.Set;
 public class UserDTO {
   @NotNull
   private String name;
-  private String[] roles;
-  private Set<UserFoodHistoryDTO> userFoodHistoryList;
+  private UserRole[] roles;
+  private Set<UserFoodHistoryDTO> userFoodHistory;
 }

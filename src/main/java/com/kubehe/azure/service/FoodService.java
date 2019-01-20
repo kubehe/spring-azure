@@ -4,12 +4,14 @@ package com.kubehe.azure.service;
 import com.kubehe.azure.domain.FoodEntity;
 import com.kubehe.azure.repository.FoodRepository;
 import com.kubehe.azure.service.dto.FoodDTO;
+import com.kubehe.azure.service.dto.FoodRequest;
 import com.kubehe.azure.service.mapper.FoodMapper;
 import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -25,8 +27,8 @@ public class FoodService {
     this.foodRepository = foodRepository;
   }
 
-  public FoodDTO addFood(FoodDTO foodDTO) {
-    var result = foodRepository.save(FoodMapper.MAPPER.toEntity(foodDTO));
+  public FoodDTO addFood(FoodRequest foodRequest) {
+    var result = foodRepository.save(FoodMapper.MAPPER.toEntity(foodRequest));
 
     return FoodMapper.MAPPER.toDTO(result);
   }

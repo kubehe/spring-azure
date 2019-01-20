@@ -25,7 +25,7 @@ public class FoodEntity {
   private Long calories;
 
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "food")
-  private Set<UserFoodHistoryEntity> userFoodHistory;
+  private Set<UserFoodHistoryEntity> userFoodHistory = new HashSet<>();
 
   public void addUserFoodHistoryEntity(UserFoodHistoryEntity entity) {
     entity.setFood(this);
