@@ -1,4 +1,4 @@
-var path = require('path');
+const path = require('path');
 
 module.exports = {
   entry: './src/main/js/index.js',
@@ -20,6 +20,10 @@ module.exports = {
             presets: ["@babel/preset-env", "@babel/preset-react"]
           }
         }]
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
       }
     ]
   }
