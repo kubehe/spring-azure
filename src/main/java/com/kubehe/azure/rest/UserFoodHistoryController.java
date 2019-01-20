@@ -14,7 +14,7 @@ import javax.validation.Valid;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
-@RequestMapping(path = "/api/food-diary")
+@RequestMapping(path = "/api/user-food-history")
 public class UserFoodHistoryController {
 
   private UserFoodHistoryService userFoodHistoryService;
