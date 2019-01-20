@@ -1,5 +1,6 @@
 import Axios from "axios";
 
+
 export const getFood = async (name) => {
   const res = await Axios.get(`/api/food/${name}`, {withCredentials: true});
   return await res;
@@ -53,3 +54,4 @@ export const removeFoodHistory = async ({dateOfConsumption, food, name}) => {
   return await res;
 };
 
+export default useApi;
