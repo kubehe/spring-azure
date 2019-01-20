@@ -1,57 +1,46 @@
 import Axios from "axios";
 
 
-export const getFood = async (name) => {
-  const res = await Axios.get(`/api/food/${name}`, {withCredentials: true});
-  return await res;
+export const getFood = (name) => {
+  return Axios.get(`/api/food/${name}`, {withCredentials: true});
 };
 
-export const getFoods = async () => {
-  const res = await Axios.get('/api/food');
-  return await res;
+export const getFoods = () => {
+  return Axios.get('/api/food');
 };
 
-export const addFood = async ({name, calories}) => {
-  const res = await Axios.post('/api/food', {name, calories}, {withCredentials: true});
-  return await res;
+export const addFood = ({name, calories}) => {
+  return Axios.post('/api/food', {name, calories}, {withCredentials: true});
 };
 
-export const removeFood = async (name) => {
-  const res = await Axios.delete(`/api/food/${name}`, {withCredentials: true});
-  return await res;
+export const removeFood = (name) => {
+  return Axios.delete(`/api/food/${name}`, {withCredentials: true});
 };
 
-export const getUser = async (name) => {
-  const res = await Axios.get(`/api/user/${name}`, {withCredentials: true});
-  return await res;
+export const getUser = (name) => {
+  return Axios.get(`/api/user/${name}`, {withCredentials: true});
 };
 
-export const getUsers = async () => {
-  const res = await Axios.get('/api/user');
-  return await res;
+export const getUsers = () => {
+  return Axios.get('/api/user');
 };
 
-export const addUser = async ({name, password, roles}) => {
-  const res = await Axios.post('/api/user', {name, password, roles}, {withCredentials: true});
-  return await res;
+export const addUser = ({name, password, roles}) => {
+  return Axios.post('/api/user', {name, password, roles}, {withCredentials: true});
 };
 
-export const removeUser = async (name) => {
-  const res = await Axios.delete(`/api/user/${name}`, {withCredentials: true});
-  return await res;
+export const removeUser = (name) => {
+  return Axios.delete(`/api/user/${name}`, {withCredentials: true});
 };
 
-export const addFoodHistory = async ({dateOfConsumption, food, name}) => {
-  const res = await Axios.post('/api/user-food-history', {dateOfConsumption, food, name}, {withCredentials: true});
-  return await res;
+export const addFoodHistory = ({dateOfConsumption, food, name}) => {
+  return Axios.post('/api/user-food-history', {dateOfConsumption, food, name}, {withCredentials: true});
 };
 
-export const removeFoodHistory = async ({dateOfConsumption, food, name}) => {
-  const res = await Axios.delete('/api/user-food-history', {
+export const removeFoodHistory = ({dateOfConsumption, food, name}) => {
+  return Axios.delete('/api/user-food-history', {
     data: {dateOfConsumption, food, name},
     withCredentials: true
   });
-  return await res;
 };
 
-export default useApi;
