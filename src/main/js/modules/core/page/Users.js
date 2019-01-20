@@ -6,7 +6,7 @@ import UserModal from "./modal/UserModal";
 const mapUsers = (users, fetchData) => (users.map(({name, roles}) =>
   <tr key={name}>
     <td>{name}</td>
-    <td>{roles.map((role) => <Badge className="mr-1" pill color="primary">{role}</Badge>)}</td>
+    <td>{roles.map((role) => <Badge key="role" className="mr-1" pill color="primary">{role}</Badge>)}</td>
     <td><Button onClick={() => removeUser(name).then(() => fetchData())} color="danger">Delete</Button></td>
   </tr>
 ));
@@ -22,7 +22,7 @@ const Foods = () => {
 
   return (
     <Card className="my-4">
-      <CardHeader>Foods</CardHeader>
+      <CardHeader>Users</CardHeader>
       <CardBody>
         <Table>
           <thead>
