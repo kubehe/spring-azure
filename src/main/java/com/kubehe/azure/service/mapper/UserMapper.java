@@ -24,6 +24,7 @@ public interface UserMapper {
 
   @Named("userFoodHistoryMapper")
   default Set<UserFoodHistoryDTO> mapUserFoodHistoryEntity(Set<UserFoodHistoryEntity> userFoodHistory) {
+    if (userFoodHistory == null) return null;
     return userFoodHistory.stream().map(UserFoodHistoryMapper.MAPPER::toDTO).collect(Collectors.toSet());
   }
 }
