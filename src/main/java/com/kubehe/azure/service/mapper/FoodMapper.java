@@ -10,6 +10,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 import org.mapstruct.factory.Mappers;
 
+import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -24,6 +25,7 @@ public interface FoodMapper {
 
   @Named("toDTO")
   default Set<UserFoodHistoryDTO> mapUserFoodHistoryEntity(Set<UserFoodHistoryEntity> userFoodHistory) {
+    if (userFoodHistory == null) return null;
     return userFoodHistory.stream().map(UserFoodHistoryMapper.MAPPER::toDTO).collect(Collectors.toSet());
   }
 

@@ -1,6 +1,5 @@
 package com.kubehe.azure.service.dto;
 
-
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
