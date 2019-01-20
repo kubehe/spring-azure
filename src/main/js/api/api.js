@@ -33,6 +33,10 @@ export const removeUser = (name) => {
   return Axios.delete(`/api/user/${name}`, {withCredentials: true});
 };
 
+export const getCurrentUserName = () => {
+  return Axios.post('/api/user/current', undefined, {withCredentials: true});
+};
+
 export const addFoodHistory = ({dateOfConsumption, food, name}) => {
   return Axios.post('/api/user-food-history', {dateOfConsumption, food, name}, {withCredentials: true});
 };

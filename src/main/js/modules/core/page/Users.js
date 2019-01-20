@@ -11,7 +11,7 @@ const mapUsers = (users, fetchData) => (users.map(({name, roles}) =>
   </tr>
 ));
 
-const Foods = () => {
+const Users = () => {
   const [users, setUsers] = useState([]);
 
   const fetchData = () => getUsers().then((response) => setUsers(response.data === null ? [] : response.data));
@@ -42,4 +42,4 @@ const Foods = () => {
   )
 };
 
-export default Foods;
+export default Users;
