@@ -1,0 +1,56 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--<changeSet author="kubehe (generated)" id="1548086780634-1">-->
+    <!--<createSequence sequenceName="hibernate_sequence"/>-->
+    <!--</changeSet>-->
+    <changeSet author="kubehe (generated)" id="1548086780634-2">
+        <createTable tableName="food_entity">
+            <column autoIncrement="true" name="id" type="BIGSERIAL">
+                <constraints primaryKey="true" primaryKeyName="food_entity_pkey"/>
+            </column>
+            <column name="calories" type="BIGINT"/>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="kubehe (generated)" id="1548086780634-3">
+        <createTable tableName="user_entity">
+            <column name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="user_entity_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="password" type="VARCHAR(255)"/>
+            <column name="roles" type="BYTEA"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="kubehe (generated)" id="1548086780634-4">
+        <createTable tableName="user_food_history_entity">
+            <column autoIncrement="true" name="id" type="BIGSERIAL">
+                <constraints primaryKey="true" primaryKeyName="user_food_history_entity_pkey"/>
+            </column>
+            <column name="date_of_consumption" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="food_id" type="BIGINT"/>
+            <column name="user_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="kubehe (generated)" id="1548086780634-5">
+        <addUniqueConstraint columnNames="name" constraintName="uk_b1pviq1wx6bubndgusygh42kn" tableName="food_entity"/>
+    </changeSet>
+    <changeSet author="kubehe (generated)" id="1548086780634-6">
+        <addUniqueConstraint columnNames="name" constraintName="uk_h04bt0tip62sb2c5l159nusdy" tableName="user_entity"/>
+    </changeSet>
+    <changeSet author="kubehe (generated)" id="1548086780634-7">
+        <addForeignKeyConstraint baseColumnNames="food_id" baseTableName="user_food_history_entity"
+                                 constraintName="fkaydkmth2qo0hj2cnk8clsq491" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="food_entity" validate="true"/>
+    </changeSet>
+    <changeSet author="kubehe (generated)" id="1548086780634-8">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_food_history_entity"
+                                 constraintName="fkstes9fyfkklkxe2c420jmhdi" deferrable="false"
+                                 initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="user_entity" validate="true"/>
+    </changeSet>
+</databaseChangeLog>

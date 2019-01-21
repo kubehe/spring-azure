@@ -10,6 +10,8 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
+
 @Component
 public class AzureCommandLineRunner implements CommandLineRunner {
 
@@ -23,12 +25,22 @@ public class AzureCommandLineRunner implements CommandLineRunner {
   @Override
   public void run(String... args) throws Exception {
 
-    this.userRepository.save(UserEntity.builder().name("admin").password("admin").roles(new String[]{UserRole.ADMIN.getValue()}).build());
+    if (this.userRepository.findByName("admin") == null) {
+      this.userRepository.save(
+        UserEntity.builder()
+          .name("admin")
+          .password("admin")
+          .roles(new String[]{UserRole.ADMIN.getValue()})
+          .build());
 
-    SecurityContextHolder.getContext().setAuthentication(
-      new UsernamePasswordAuthenticationToken("admin", "lolasdfasdfa",
-        AuthorityUtils.createAuthorityList(UserRole.ADMIN.getValue())));
+      SecurityContextHolder.getContext()
+        .setAuthentication(
+          new UsernamePasswordAuthenticationToken(
+            "admin",
+            "lolasdfasdfa",
+            AuthorityUtils.createAuthorityList(UserRole.ADMIN.getValue())));
 
-    SecurityContextHolder.clearContext();
+      SecurityContextHolder.clearContext();
+    }
   }
 }
