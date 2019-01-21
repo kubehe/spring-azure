@@ -1,0 +1,20 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <changeSet author="kubehe" id="4">
+        <sql>
+            INSERT INTO public.user_food_history_entity (id, date_of_consumption, food_id, user_id) VALUES (1,
+            '2019-01-15 01:00:00.000000', 2, 1);
+            INSERT INTO public.user_food_history_entity (id, date_of_consumption, food_id, user_id) VALUES (2,
+            '2019-01-07 01:00:00.000000', 4, 1);
+            INSERT INTO public.user_food_history_entity (id, date_of_consumption, food_id, user_id) VALUES (3,
+            '2019-01-15 01:00:00.000000', 5, 1);
+            INSERT INTO public.user_food_history_entity (id, date_of_consumption, food_id, user_id) VALUES (4,
+            '2019-01-21 15:01:00.000000', 3, 1);
+            INSERT INTO public.user_food_history_entity (id, date_of_consumption, food_id, user_id) VALUES (5,
+            '2019-01-21 01:00:00.000000', 6, 1);
+        </sql>
+    </changeSet>
+</databaseChangeLog>

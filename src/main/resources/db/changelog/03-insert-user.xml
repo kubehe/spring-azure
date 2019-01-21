@@ -1,0 +1,22 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <changeSet author="kubehe" id="3">
+        <sql>
+            INSERT INTO public.user_entity (id, name, password, roles) VALUES (1, 'admin',
+            '$2a$10$qZkPI5Ie3q7e.2kH9bZBFuJ2U7rXFdlj4dL3gqWvohuThmXjfj44q',
+            E'\\xACED0005757200135B4C6A6176612E6C616E672E537472696E673BADD256E7E91D7B4702000078700000000174000541444D494E');
+            INSERT INTO public.user_entity (id, name, password, roles) VALUES (2, 'test',
+            '$2a$10$ydO/np346/Mx0r82LlRftOuTpNvUn.p8cktgmWkapsrdlvVvUoihS',
+            E'\\xACED0005757200135B4C6A6176612E6C616E672E537472696E673BADD256E7E91D7B47020000787000000001740007524547554C4152');
+            INSERT INTO public.user_entity (id, name, password, roles) VALUES (3, 'mike',
+            '$2a$10$o42SdDxNkMHmuv4DDEF8Eup5dwJv0wZxLYWb7ojJC67/yMx2Jue7S',
+            E'\\xACED0005757200135B4C6A6176612E6C616E672E537472696E673BADD256E7E91D7B47020000787000000001740007524547554C4152');
+            INSERT INTO public.user_entity (id, name, password, roles) VALUES (4, 'jstar',
+            '$2a$10$lEopF5il7NeaFl0HwsGJM.ZUvgyKpXznRbg4zwIjp2C5qFZwrVQvi',
+            E'\\xACED0005757200135B4C6A6176612E6C616E672E537472696E673BADD256E7E91D7B4702000078700000000174000541444D494E');
+        </sql>
+    </changeSet>
+</databaseChangeLog>
