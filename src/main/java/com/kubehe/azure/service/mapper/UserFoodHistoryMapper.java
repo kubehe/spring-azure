@@ -12,6 +12,7 @@ import org.mapstruct.Named;
 import org.mapstruct.factory.Mappers;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 @Mapper
 public interface UserFoodHistoryMapper {
@@ -22,7 +23,7 @@ public interface UserFoodHistoryMapper {
     @Mapping(target = "name", source = "userFoodHistoryEntity.user.name"),
     @Mapping(target = "food", source = "userFoodHistoryEntity.food.name"),
     @Mapping(target = "calories", source = "userFoodHistoryEntity.food.calories"),
-    @Mapping(target = "dateOfConsumption", source = "userFoodHistoryEntity.dateOfConsumption", qualifiedByName = "dateToString")
+    @Mapping(target = "dateOfConsumption", source = "userFoodHistoryEntity.dateOfConsumption")
   })
   UserFoodHistoryDTO toDTO(UserFoodHistoryEntity userFoodHistoryEntity);
 
@@ -33,9 +34,4 @@ public interface UserFoodHistoryMapper {
     @Mapping(target = "id", ignore = true)
   })
   UserFoodHistoryEntity toEntity(UserFoodHistoryRequest userFoodHistoryRequest, UserEntity userEntity, FoodEntity foodEntity);
-
-  @Named("dateToString")
-  default String dateToString(Date date) {
-    return Long.toString(date.getTime());
-  }
 }

@@ -6,17 +6,18 @@ import com.kubehe.azure.domain.UserFoodHistoryEntity
 import spock.lang.Specification
 
 import java.sql.Date
+import java.sql.Timestamp
 
 class UserMapperTest extends Specification {
     def "MapUserFoodHistoryEntity"() {
         given: "set of user food history entities"
-        def input = Set.of(UserFoodHistoryEntity.builder().dateOfConsumption(new Date(timestamp)).build())
+        def input = Set.of(UserFoodHistoryEntity.builder().dateOfConsumption(new Timestamp(timestamp)).build())
 
         and: "set of entities mapped to dto"
         def result = UserMapper.MAPPER.mapUserFoodHistoryEntity(input)
 
         expect:
-        assert result.dateOfConsumption.get(0) == stringTimestamp
+        assert Integer.toString(result.dateOfConsumption.get(0).hashCode()) == stringTimestamp
 
         where:
         timestamp  | stringTimestamp
@@ -32,7 +33,7 @@ class UserMapperTest extends Specification {
         def foodEntity = FoodEntity.builder().name(foodName).build()
 
         and: "user has eaten food"
-        def userFoodHistory = UserFoodHistoryEntity.builder().dateOfConsumption(new Date(timestamp)).user(userEntity).food(foodEntity).build()
+        def userFoodHistory = UserFoodHistoryEntity.builder().dateOfConsumption(new Timestamp(timestamp)).user(userEntity).food(foodEntity).build()
 
         when: "food is added to user"
         userEntity.addUserFoodHistoryEntity(userFoodHistory)
@@ -43,7 +44,7 @@ class UserMapperTest extends Specification {
         expect:
         assert userDTO.name == name
         assert userDTO.userFoodHistory.food.get(0) == foodName
-        assert userDTO.userFoodHistory.dateOfConsumption.get(0) == stringTimestamp
+        assert Integer.toString(userDTO.userFoodHistory.dateOfConsumption.get(0).hashCode()) == stringTimestamp
 
         where:
 

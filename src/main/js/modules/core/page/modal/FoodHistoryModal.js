@@ -22,6 +22,7 @@ const ModalComponent = ({onOk, name, foodList}) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen((prev) => !prev);
 
+  console.log(time)
   return (
     <>
       <Button color="success" onClick={() => setIsOpen(true)}>Add</Button>
@@ -62,7 +63,11 @@ const ModalComponent = ({onOk, name, foodList}) => {
                     color="primary" type="submit" onClick={(e) => {
               e.preventDefault();
               toggle();
-              addFoodHistory({dateOfConsumption: moment(date, 'YYYY-MM-DD').unix(), name, food}).then(() => onOk())
+              addFoodHistory({
+                dateOfConsumption: moment(`${date} ${time}`, 'YYYY-MM-DD hh:mm').unix() * 1000,
+                name,
+                food
+              }).then(() => onOk()).then(() => setDate(null) && setFood("") && setTime(null))
             }}>Add</Button>
             <Button color="secondary" type="reset" onClick={toggle}>Cancel</Button>
           </ModalFooter>

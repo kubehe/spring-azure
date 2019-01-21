@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import java.sql.Date;
+import java.sql.Timestamp;
 
 @NoArgsConstructor
 @Data
@@ -16,5 +16,5 @@ public class UserFoodHistoryRequest {
   @NotEmpty
   String food;
   @NotNull
-  Date dateOfConsumption;
+  Timestamp dateOfConsumption;
 }
