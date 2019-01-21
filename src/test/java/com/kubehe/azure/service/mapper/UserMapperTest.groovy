@@ -5,7 +5,6 @@ import com.kubehe.azure.domain.UserEntity
 import com.kubehe.azure.domain.UserFoodHistoryEntity
 import spock.lang.Specification
 
-import java.sql.Date
 import java.sql.Timestamp
 
 class UserMapperTest extends Specification {
