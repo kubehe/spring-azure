@@ -8,7 +8,7 @@ const mapUserData = (userData, fetchData, userName) => (userData.map(({food, cal
   <tr key={dateOfConsumption}>
     <td>{food}</td>
     <td>{calories} cal</td>
-    <td>{moment.unix(dateOfConsumption).calendar()}</td>
+    <td>{moment(dateOfConsumption.split("T").join(" ").split(".")[0], "YYYY-MM-DD hh:mm:ss").fromNow()}</td>
     <td><Button onClick={() => removeFoodHistory({food, name: userName, dateOfConsumption}).then(() => fetchData())}
                 color="danger">Delete</Button></td>
   </tr>

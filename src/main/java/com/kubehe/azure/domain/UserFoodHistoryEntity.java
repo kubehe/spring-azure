@@ -4,7 +4,7 @@ package com.kubehe.azure.domain;
 import lombok.*;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.sql.Timestamp;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,5 +23,5 @@ public class UserFoodHistoryEntity {
   @ManyToOne
   private FoodEntity food;
 
-  private Date dateOfConsumption;
+  private Timestamp dateOfConsumption;
 }
